@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+    xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-zoom" version="1.0.1">
+    <name>ZOOM</name>
+    <description>Cordova ZOOM Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,zoom</keywords>
+    <repo>https://github.com/Silverg4te/cordova-plugin-zoom.git</repo>
+
+    <js-module name="zoom" src="www/zoom.js" >
+        <clobbers target="zoom" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ZOOM">
+                <param name="android-package" value="org.apache.cordova.zoom.Zoom"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/Zoom.java" target-dir="src/org/apache/cordova/zoom" />
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="ZOOM">
+                <param name="ios-package" value="CDVZoom"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/ios/lib/MobileRTC.framework" framework="true" />
+        <source-file src="src/ios/lib/MobileRTCResources.bundle" framework="true" />
+        <source-file src="src/ios/lib/MobileRTCScreenShare.framework" framework="true" />
+
+        <header-file src="src/ios/lib/MobileRTC.framework/Headers/MobileRTC.h" />
+
+        <header-file src="src/ios/CDVZoom.h" />
+        <source-file src="src/ios/CDVZoom.m" />
+    </platform>
+</plugin>
